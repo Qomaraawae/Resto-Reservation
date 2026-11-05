@@ -1,0 +1,714 @@
+{
+  "tables": [
+    {
+      "id": "1",
+      "number": "A1",
+      "capacity": 4,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "2",
+      "number": "A2",
+      "capacity": 4,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "3",
+      "number": "A3",
+      "capacity": 2,
+      "status": "available",
+      "currentOrderId": "D8D8JnSxZ9s"
+    },
+    {
+      "id": "4",
+      "number": "A4",
+      "capacity": 6,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "5",
+      "number": "B1",
+      "capacity": 4,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "6",
+      "number": "B2",
+      "capacity": 4,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "7",
+      "number": "B3",
+      "capacity": 2,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "8",
+      "number": "B4",
+      "capacity": 6,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "9",
+      "number": "C1",
+      "capacity": 4,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "10",
+      "number": "C2",
+      "capacity": 4,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "11",
+      "number": "C3",
+      "capacity": 2,
+      "status": "available",
+      "currentOrderId": null
+    },
+    {
+      "id": "12",
+      "number": "C4",
+      "capacity": 8,
+      "status": "available",
+      "currentOrderId": null
+    }
+  ],
+  "reservations": [],
+  "menus": [
+    {
+      "id": "1",
+      "name": "Nasi Goreng",
+      "category": "makanan",
+      "price": 25000,
+      "isAvailable": true
+    },
+    {
+      "id": "2",
+      "name": "Mie Goreng",
+      "category": "makanan",
+      "price": 22000,
+      "isAvailable": true
+    },
+    {
+      "id": "3",
+      "name": "Ayam Bakar",
+      "category": "makanan",
+      "price": 35000,
+      "isAvailable": true
+    },
+    {
+      "id": "4",
+      "name": "Sate Ayam",
+      "category": "makanan",
+      "price": 30000,
+      "isAvailable": true
+    },
+    {
+      "id": "5",
+      "name": "Es Teh",
+      "category": "minuman",
+      "price": 5000,
+      "isAvailable": true
+    },
+    {
+      "id": "6",
+      "name": "Es Jeruk",
+      "category": "minuman",
+      "price": 8000,
+      "isAvailable": true
+    },
+    {
+      "id": "7",
+      "name": "Air Mineral",
+      "category": "minuman",
+      "price": 4000,
+      "isAvailable": true
+    },
+    {
+      "id": "8",
+      "name": "Pisang Goreng",
+      "category": "snack",
+      "price": 15000,
+      "isAvailable": true
+    }
+  ],
+  "orders": [
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-24T15:26:05.910Z",
+      "totalAmount": 0,
+      "id": "jyP2IjTPMpg"
+    },
+    {
+      "tableId": "3",
+      "status": "served",
+      "orderTime": "2026-03-24T15:30:57.875Z",
+      "totalAmount": 0,
+      "id": "x6KtUBHWfbY"
+    },
+    {
+      "tableId": "5",
+      "status": "served",
+      "orderTime": "2026-03-24T15:37:34.629Z",
+      "totalAmount": 0,
+      "id": "aVhdoXsT2HY"
+    },
+    {
+      "tableId": "4",
+      "status": "served",
+      "orderTime": "2026-03-24T15:39:50.298Z",
+      "totalAmount": 0,
+      "id": "jiwpmgbOBy0"
+    },
+    {
+      "tableId": "5",
+      "status": "served",
+      "orderTime": "2026-03-24T15:40:44.010Z",
+      "totalAmount": 0,
+      "id": "YD7Wa9Fkl7I"
+    },
+    {
+      "tableId": "5",
+      "status": "served",
+      "orderTime": "2026-03-26T10:51:14.692Z",
+      "totalAmount": 0,
+      "id": "UIOkhG5bYYg"
+    },
+    {
+      "tableId": "5",
+      "status": "served",
+      "orderTime": "2026-03-26T10:57:03.189Z",
+      "totalAmount": 0,
+      "id": "Ql7n96twHvk"
+    },
+    {
+      "tableId": "5",
+      "status": "served",
+      "orderTime": "2026-03-26T10:57:08.964Z",
+      "totalAmount": 0,
+      "id": "EHCZStDsfvs"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-26T10:57:42.359Z",
+      "totalAmount": 0,
+      "id": "nZZ9XPVpmRA"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-26T10:57:43.781Z",
+      "totalAmount": 0,
+      "id": "CSJ0bLcShww"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-26T10:57:45.970Z",
+      "totalAmount": 0,
+      "id": "jHb9CiBGrJ8"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-26T10:57:48.520Z",
+      "totalAmount": 0,
+      "id": "IlG_eKE2lMI"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-26T11:01:28.570Z",
+      "totalAmount": 0,
+      "id": "fiuolwFhA2Y"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-26T11:01:35.092Z",
+      "totalAmount": 0,
+      "id": "6qVz6NwGHsk"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-26T11:19:59.175Z",
+      "totalAmount": 0,
+      "id": "Oxp_YS0PKfM"
+    },
+    {
+      "tableId": "3",
+      "status": "served",
+      "orderTime": "2026-03-26T11:30:47.814Z",
+      "totalAmount": 0,
+      "id": "B8zCCEC-wrw"
+    },
+    {
+      "tableId": "3",
+      "status": "served",
+      "orderTime": "2026-03-26T11:35:54.144Z",
+      "totalAmount": 0,
+      "id": "xtPPAXSbHg0"
+    },
+    {
+      "tableId": "3",
+      "status": "served",
+      "orderTime": "2026-03-26T11:36:05.351Z",
+      "totalAmount": 0,
+      "id": "_JSPHANLMIY"
+    },
+    {
+      "tableId": "3",
+      "status": "served",
+      "orderTime": "2026-03-26T11:36:10.156Z",
+      "totalAmount": 0,
+      "id": "lWKv2TdVNm0"
+    },
+    {
+      "tableId": "3",
+      "status": "served",
+      "orderTime": "2026-03-26T12:24:39.125Z",
+      "totalAmount": 0,
+      "id": "D8D8JnSxZ9s"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-29T15:05:35.173Z",
+      "totalAmount": 0,
+      "id": "RH4ht40ygAQ"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-29T15:05:45.843Z",
+      "totalAmount": 0,
+      "id": "fLnP_JHmm0k"
+    },
+    {
+      "tableId": "1",
+      "status": "served",
+      "orderTime": "2026-03-29T15:23:25.450Z",
+      "totalAmount": 0,
+      "id": "HjYhzMv0jAk"
+    },
+    {
+      "tableId": "1",
+      "status": "served",
+      "orderTime": "2026-03-29T15:23:37.923Z",
+      "totalAmount": 0,
+      "id": "yadV2pn1BSc"
+    },
+    {
+      "tableId": "1",
+      "status": "served",
+      "orderTime": "2026-03-29T15:46:07.181Z",
+      "totalAmount": 0,
+      "id": "ZD-YfzNrsFM"
+    },
+    {
+      "tableId": "9",
+      "status": "served",
+      "orderTime": "2026-03-29T15:47:56.796Z",
+      "totalAmount": 0,
+      "id": "R9cX838uZ8s"
+    },
+    {
+      "tableId": "10",
+      "status": "served",
+      "orderTime": "2026-03-29T15:48:53.622Z",
+      "totalAmount": 0,
+      "id": "ZZuewkI58gQ"
+    },
+    {
+      "tableId": "9",
+      "status": "draft",
+      "orderTime": "2026-03-29T15:54:33.000Z",
+      "totalAmount": 0,
+      "id": "AT8lOUq7hvU"
+    },
+    {
+      "tableId": "2",
+      "status": "served",
+      "orderTime": "2026-03-29T15:56:48.082Z",
+      "totalAmount": 0,
+      "id": "DTiMctZxsI0"
+    },
+    {
+      "tableId": "10",
+      "status": "draft",
+      "orderTime": "2026-03-29T16:01:12.954Z",
+      "totalAmount": 0,
+      "id": "JTSgO9JyOxA"
+    },
+    {
+      "tableId": "12",
+      "status": "draft",
+      "orderTime": "2026-07-19T10:06:01.312Z",
+      "totalAmount": 0,
+      "id": "95efye3gEgI"
+    },
+    {
+      "tableId": "12",
+      "status": "draft",
+      "orderTime": "2026-07-19T10:06:22.051Z",
+      "totalAmount": 0,
+      "id": "0WovoMAhD3E"
+    },
+    {
+      "tableId": "12",
+      "status": "draft",
+      "orderTime": "2026-07-19T10:06:31.879Z",
+      "totalAmount": 0,
+      "id": "d8-SoIZdz3o"
+    },
+    {
+      "tableId": "1",
+      "status": "draft",
+      "orderTime": "2026-07-19T10:07:10.629Z",
+      "totalAmount": 0,
+      "id": "qCgDuT9IPxA"
+    }
+  ],
+  "orderItems": [
+    {
+      "orderId": "jyP2IjTPMpg",
+      "menuId": "1",
+      "quantity": 2,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "gINLdzZN9Tw"
+    },
+    {
+      "orderId": "jyP2IjTPMpg",
+      "menuId": "6",
+      "quantity": 1,
+      "price": 8000,
+      "status": "served",
+      "notes": "",
+      "id": "3RXKaRl4dgc"
+    },
+    {
+      "orderId": "jyP2IjTPMpg",
+      "menuId": "3",
+      "quantity": 2,
+      "price": 35000,
+      "status": "served",
+      "notes": "",
+      "id": "3m5D0sqBQ8c"
+    },
+    {
+      "orderId": "jyP2IjTPMpg",
+      "menuId": "1",
+      "quantity": 3,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "wzocPvs-78U"
+    },
+    {
+      "orderId": "jyP2IjTPMpg",
+      "menuId": "2",
+      "quantity": 1,
+      "price": 22000,
+      "status": "served",
+      "notes": "",
+      "id": "eJXxaz69Ob8"
+    },
+    {
+      "orderId": "jyP2IjTPMpg",
+      "menuId": "3",
+      "quantity": 1,
+      "price": 35000,
+      "status": "served",
+      "notes": "",
+      "id": "Dc650cBIUQE"
+    },
+    {
+      "orderId": "jyP2IjTPMpg",
+      "menuId": "4",
+      "quantity": 1,
+      "price": 30000,
+      "status": "served",
+      "notes": "",
+      "id": "Y9mjCPS_UNw"
+    },
+    {
+      "orderId": "x6KtUBHWfbY",
+      "menuId": "1",
+      "quantity": 2,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "LX4YneeltyM"
+    },
+    {
+      "orderId": "x6KtUBHWfbY",
+      "menuId": "2",
+      "quantity": 2,
+      "price": 22000,
+      "status": "served",
+      "notes": "",
+      "id": "t3XyTM5kKg0"
+    },
+    {
+      "orderId": "x6KtUBHWfbY",
+      "menuId": "1",
+      "quantity": 1,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "BUjzR9ZJ91M"
+    },
+    {
+      "orderId": "aVhdoXsT2HY",
+      "menuId": "1",
+      "quantity": 1,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "aKxx5Sw_rEY"
+    },
+    {
+      "orderId": "x6KtUBHWfbY",
+      "menuId": "1",
+      "quantity": 4,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "tH6sfvKpbVM"
+    },
+    {
+      "orderId": "jiwpmgbOBy0",
+      "menuId": "5",
+      "quantity": 1,
+      "price": 5000,
+      "status": "served",
+      "notes": "",
+      "id": "u-McpwX2qr4"
+    },
+    {
+      "orderId": "jiwpmgbOBy0",
+      "menuId": "1",
+      "quantity": 2,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "HHR5eBZQ3_c"
+    },
+    {
+      "orderId": "jiwpmgbOBy0",
+      "menuId": "4",
+      "quantity": 3,
+      "price": 30000,
+      "status": "served",
+      "notes": "",
+      "id": "cYSFIt4w1uI"
+    },
+    {
+      "orderId": "jiwpmgbOBy0",
+      "menuId": "4",
+      "quantity": 2,
+      "price": 30000,
+      "status": "served",
+      "notes": "",
+      "id": "2s0-wNGSABE"
+    },
+    {
+      "orderId": "jiwpmgbOBy0",
+      "menuId": "1",
+      "quantity": 11,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "cjwxRXaOWC8"
+    },
+    {
+      "orderId": "YD7Wa9Fkl7I",
+      "menuId": "3",
+      "quantity": 1,
+      "price": 35000,
+      "status": "served",
+      "notes": "",
+      "id": "OR0iD1a5LFQ"
+    },
+    {
+      "orderId": "UIOkhG5bYYg",
+      "menuId": "1",
+      "quantity": 1,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "vh4m3brNdiE"
+    },
+    {
+      "orderId": "UIOkhG5bYYg",
+      "menuId": "2",
+      "quantity": 1,
+      "price": 22000,
+      "status": "served",
+      "notes": "",
+      "id": "9KIQ37xA2Sc"
+    },
+    {
+      "orderId": "UIOkhG5bYYg",
+      "menuId": "6",
+      "quantity": 1,
+      "price": 8000,
+      "status": "served",
+      "notes": "",
+      "id": "qxCBfud3wMI"
+    },
+    {
+      "orderId": "UIOkhG5bYYg",
+      "menuId": "5",
+      "quantity": 1,
+      "price": 5000,
+      "status": "served",
+      "notes": "",
+      "id": "9ii4sPQLcZg"
+    },
+    {
+      "orderId": "UIOkhG5bYYg",
+      "menuId": "8",
+      "quantity": 1,
+      "price": 15000,
+      "status": "served",
+      "notes": "",
+      "id": "lS1IpNw0M_Y"
+    },
+    {
+      "orderId": "UIOkhG5bYYg",
+      "menuId": "2",
+      "quantity": 1,
+      "price": 22000,
+      "status": "served",
+      "notes": "",
+      "id": "VwL1lfIr7Q8"
+    },
+    {
+      "orderId": "UIOkhG5bYYg",
+      "menuId": "1",
+      "quantity": 1,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "O6gfPFBU5gc"
+    },
+    {
+      "orderId": "Ql7n96twHvk",
+      "menuId": "1",
+      "quantity": 1,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "UfmWaY4eyV8"
+    },
+    {
+      "orderId": "EHCZStDsfvs",
+      "menuId": "2",
+      "quantity": 2,
+      "price": 22000,
+      "status": "served",
+      "notes": "",
+      "id": "ibTcIinFQJ8"
+    },
+    {
+      "orderId": "nZZ9XPVpmRA",
+      "menuId": "1",
+      "quantity": 1,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "FtRP3_kElvE"
+    },
+    {
+      "orderId": "CSJ0bLcShww",
+      "menuId": "5",
+      "quantity": 1,
+      "price": 5000,
+      "status": "served",
+      "notes": "",
+      "id": "6QFMuGuN0Io"
+    },
+    {
+      "orderId": "jHb9CiBGrJ8",
+      "menuId": "2",
+      "quantity": 1,
+      "price": 22000,
+      "status": "served",
+      "notes": "",
+      "id": "v0R7nkY7Jjo"
+    },
+    {
+      "orderId": "IlG_eKE2lMI",
+      "menuId": "6",
+      "quantity": 2,
+      "price": 8000,
+      "status": "served",
+      "notes": "",
+      "id": "r8E1ZtUeDbA"
+    },
+    {
+      "orderId": "fiuolwFhA2Y",
+      "menuId": "2",
+      "quantity": 1,
+      "price": 22000,
+      "status": "served",
+      "notes": "",
+      "id": "tFS1bu_NC3w"
+    },
+    {
+      "orderId": "6qVz6NwGHsk",
+      "menuId": "4",
+      "quantity": 1,
+      "price": 30000,
+      "status": "served",
+      "notes": "",
+      "id": "y02sGhv8wiQ"
+    },
+    {
+      "orderId": "Oxp_YS0PKfM",
+      "menuId": "1",
+      "quantity": 1,
+      "price": 25000,
+      "status": "served",
+      "notes": "",
+      "id": "dY3LY8PUAic"
+    },
+    {
+      "orderId": "Oxp_YS0PKfM",
+      "menuId": "2",
+      "quantity": 2,
+      "price": 22000,
+      "status": "served",
+      "notes": "",
+      "id": "M7imWyecJd4"
+    },
+    {
+      "orderId": "Oxp_YS0PKfM",
+      "menuId": "6",
+      "quantity": 2,
+      "price": 8000,
+      "status": "served",
+      "notes": "",
+      "id": "vLV3nbGKEDg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
