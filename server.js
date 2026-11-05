@@ -5,7 +5,10 @@ import { PrismaClient } from '@prisma/client'
 const app = express()
 const prisma = new PrismaClient()
 
-app.use(cors())
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  credentials: true
+}))
 app.use(express.json())
 
 // Error handling middleware
@@ -839,9 +842,14 @@ app.get('/reports/export', async (req, res) => {
   }
 })
 
-// ============ START SERVER ============
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`)
-  console.log(`📊 Prisma Studio: npx prisma studio`)
-})
+// ============ EXPORT FOR VERCEL ============
+export default app
+
+// ============ START SERVER (LOKAL ONLY) ============
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 3000
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`)
+    console.log(`📊 Prisma Studio: npx prisma studio`)
+  })
+}
