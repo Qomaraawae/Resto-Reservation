@@ -15,7 +15,7 @@ model Table {
   status       String        @default("available")
   section      String?
   notes        String?
-  currentOrderId Int?        // Tambahkan field ini
+  currentOrderId Int?
   reservations Reservation[]
   orders       Order[]
   

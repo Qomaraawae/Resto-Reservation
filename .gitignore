@@ -39,3 +39,20 @@ __screenshots__/
 *.timestamp-*-*.mjs
 
 /src/generated/prisma
+.env
+
+# Database
+*.db
+*.db-journal
+dev.db
+*.sql
+
+# Vercel
+.vercel
+
+# Netlify
+.netlify
+
+# Prisma SQLite backup
+prisma/migrations.sqlite.bak
+*.bak
