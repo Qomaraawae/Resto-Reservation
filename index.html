@@ -7,44 +7,45 @@
     <meta name="theme-color" content="#3b82f6" />
     <title>Resto Reservation System</title>
     
-    <!-- Skrip untuk menghapus watermark Netlify secara paksa -->
+    <!-- Pembersih Watermark Netlify Tingkat Lanjut -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Fungsi untuk mencari dan menghapus elemen watermark
-        const removeBadge = () => {
-          // Mencari semua kemungkinan elemen watermark Netlify
-          const selectors = [
-            '#netlify-badge',
-            '[data-netlify-badge]',
-            'a[href*="netlify.com"]',
-            'iframe[src*="netlify"]'
-          ];
-          
-          selectors.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(el => {
-              // Cek jika elemen berada di pojok kanan bawah (watermark)
-              if (!el.style.position || el.style.position === 'fixed' || el.tagName === 'IFRAME') {
-                el.remove();
+      (function() {
+        // 1. Blokir script Netlify yang memunculkan watermark sebelum dimuat
+        const originalCreateElement = document.createElement;
+        document.createElement = function(tagName) {
+          const element = originalCreateElement.call(this, tagName);
+          if (tagName.toLowerCase() === 'script') {
+            const originalSetAttribute = element.setAttribute;
+            element.setAttribute = function(name, value) {
+              if (name === 'src' && value.includes('netlify')) {
+                console.log('Memblokir script Netlify:', value);
+                return; // Blokir script netlify
               }
-            });
+              originalSetAttribute.call(this, name, value);
+            };
+          }
+          return element;
+        };
+
+        // 2. Hapus paksa elemen watermark jika lolos
+        const destroyWatermark = () => {
+          document.querySelectorAll('body > div, body > a, body > iframe').forEach(el => {
+            // Cek jika elemen mencurigakan berada di pojok kanan bawah
+            const style = window.getComputedStyle(el);
+            if (
+              el.id.includes('netlify') || 
+              el.className.includes('netlify') || 
+              (style.position === 'fixed' && style.bottom !== 'auto' && style.right !== 'auto' && parseInt(style.zIndex) > 9999) ||
+              el.innerHTML.includes('Powered by Netlify')
+            ) {
+              el.remove();
+            }
           });
         };
 
-        // 1. Jalankan saat halaman pertama kali dimuat
-        removeBadge();
-
-        // 2. Gunakan MutationObserver untuk memantau jika Netlify menyuntikkan watermark secara dinamis
-        const observer = new MutationObserver(() => {
-          removeBadge();
-        });
-
-        // Pantau seluruh isi halaman
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true
-        });
-      });
+        // 3. Jalankan terus-menerus setiap 100 milidetik
+        setInterval(destroyWatermark, 100);
+      })();
     </script>
   </head>
   <body>
