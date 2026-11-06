@@ -7,17 +7,45 @@
     <meta name="theme-color" content="#3b82f6" />
     <title>Resto Reservation System</title>
     
-    <!-- CSS untuk menyembunyikan watermark Netlify -->
-    <style>
-      #netlify-badge,
-      div[data-netlify-badge],
-      a[href*="netlify.com"][target="_blank"] {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-      }
-    </style>
+    <!-- Skrip untuk menghapus watermark Netlify secara paksa -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Fungsi untuk mencari dan menghapus elemen watermark
+        const removeBadge = () => {
+          // Mencari semua kemungkinan elemen watermark Netlify
+          const selectors = [
+            '#netlify-badge',
+            '[data-netlify-badge]',
+            'a[href*="netlify.com"]',
+            'iframe[src*="netlify"]'
+          ];
+          
+          selectors.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => {
+              // Cek jika elemen berada di pojok kanan bawah (watermark)
+              if (!el.style.position || el.style.position === 'fixed' || el.tagName === 'IFRAME') {
+                el.remove();
+              }
+            });
+          });
+        };
+
+        // 1. Jalankan saat halaman pertama kali dimuat
+        removeBadge();
+
+        // 2. Gunakan MutationObserver untuk memantau jika Netlify menyuntikkan watermark secara dinamis
+        const observer = new MutationObserver(() => {
+          removeBadge();
+        });
+
+        // Pantau seluruh isi halaman
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      });
+    </script>
   </head>
   <body>
     <div id="app"></div>
