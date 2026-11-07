@@ -252,7 +252,7 @@
                         </p>
                       </div>
                     </div>
-                    <div class="text-right flex-shrink-0">
+                    <div class="text-right flex items-center gap-4 flex-shrink-0">
                       <p
                         class="font-semibold text-sm"
                         :class="
@@ -263,6 +263,16 @@
                       >
                         Rp {{ (item.price * item.quantity).toLocaleString() }}
                       </p>
+                      <!-- TOMBOL HAPUS BARU -->
+                      <button 
+                        @click.stop="deleteDraftItem(item)" 
+                        class="text-red-400 hover:text-red-600 p-1 transition-colors"
+                        title="Hapus pesanan ini"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 </label>
@@ -590,6 +600,42 @@ const showDialog = (options) => {
         dialog.value.isOpen = false
       }),
   }
+}
+
+const deleteDraftItem = async (item) => {
+  showDialog({
+    type: 'confirm',
+    title: 'Hapus Item Pesanan?',
+    message: `Apakah Anda yakin ingin menghapus ${item.quantity} porsi ${item.menuName} dari daftar pesanan?`,
+    confirmText: 'Ya, Hapus',
+    onConfirm: async () => {
+      dialog.value.isOpen = false
+      try {
+        await api.delete(`/orderItems/${item.id}`)
+        
+        // Hapus dari state centang
+        delete checkedDraftItems.value[item.id]
+        
+        // Refresh data pesanan di meja ini
+        await fetchOrderItems(selectedTable.value.id)
+        
+        showDialog({
+          type: 'success',
+          title: 'Item Dihapus',
+          message: 'Pesanan berhasil dihapus dari daftar.',
+          confirmText: 'OK'
+        })
+      } catch (error) {
+        console.error('Error deleting item:', error)
+        showDialog({
+          type: 'error',
+          title: 'Gagal Menghapus',
+          message: 'Terjadi kesalahan. Silakan coba lagi.',
+          confirmText: 'OK'
+        })
+      }
+    }
+  })
 }
 
 // ── Computed ──────────────────────────────────────────────────────────────────
