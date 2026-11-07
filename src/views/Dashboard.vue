@@ -105,13 +105,14 @@
                   
                   <!-- Nomor Urut Meja -->
                   <h3
-                    class="text-base font-semibold mb-1"
-                    :class="
-                      table.status === 'available' ? 'text-gray-800 dark:text-white' : 'text-white'
-                    "
-                  >
-                    {{ index + 1 }}
-                  </h3>
+  class="text-base font-semibold mb-1"
+  :class="
+    table.status === 'available' ? 'text-gray-800 dark:text-white' : 'text-white'
+  "
+>
+  {{ table.number }}
+</h3>
+
 
                   <!-- Kapasitas -->
                   <p
@@ -388,7 +389,10 @@ const handleReservation = async (reservationData) => {
       status: 'confirmed',
       createdAt: new Date().toISOString(),
     })
+    
+    // Update status meja di store
     await tablesStore.updateTableStatus(selectedTable.value.id, 'reserved')
+    
     showDialog({
       type: 'success',
       title: 'Reservasi Berhasil',
@@ -399,7 +403,7 @@ const handleReservation = async (reservationData) => {
       },
     })
     showReservationModal.value = false
-    await tablesStore.fetchTables()
+   
   } catch (error) {
     console.error('Error creating reservation:', error)
     showDialog({

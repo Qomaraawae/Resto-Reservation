@@ -20,13 +20,19 @@ export const useTablesStore = defineStore('tables', () => {
 
   const updateTableStatus = async (tableId, newStatus) => {
     try {
-      const table = tables.value.find(t => t.id === tableId)
-      if (table) {
-        table.status = newStatus
-        await api.patch(`/tables/${tableId}`, { status: newStatus })
+      // Panggil API terlebih dahulu
+      const response = await api.patch(`/tables/${tableId}`, { status: newStatus })
+      
+      // Update state lokal dengan data terbaru dari API
+      const tableIndex = tables.value.findIndex(t => t.id === tableId)
+      if (tableIndex !== -1) {
+        tables.value[tableIndex].status = newStatus
       }
+      
+      return response.data
     } catch (error) {
       console.error('Error updating table status:', error)
+      throw error
     }
   }
 
