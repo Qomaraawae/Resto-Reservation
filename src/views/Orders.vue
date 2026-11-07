@@ -618,8 +618,8 @@ const isTableActive = (table) => {
 }
 
 const formatTableNumber = (tableNumber) => {
-  const idx = allTables.value.findIndex((t) => t.number === tableNumber)
-  return idx >= 0 ? idx + 1 : tableNumber?.replace(/[A-Za-z]/g, '') || tableNumber
+  if (!tableNumber) return '?'
+  return tableNumber
 }
 
 const getMenuIcon = (menuName) => {

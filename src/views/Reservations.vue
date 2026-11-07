@@ -215,8 +215,7 @@ const getTableNumber = (tableId) => {
 
 const formatTableNumber = (tableNumber) => {
   if (!tableNumber) return '?'
-  const idx = tables.value.findIndex((t) => t.number === tableNumber)
-  return idx >= 0 ? idx + 1 : tableNumber.replace(/[A-Za-z]/g, '') || tableNumber
+  return tableNumber
 }
 
 const getTableIcon = (tableNumber) => {
