@@ -735,18 +735,19 @@ const fetchMenus = async () => {
 
 const fetchOrderItems = async (tableId) => {
   try {
-    const ordersRes = await api.get(`/orders?tableId=${tableId}`)
-    const activeOrder = ordersRes.data.find((o) =>
-      ['draft', 'pending', 'cooking', 'ready'].includes(o.status),
-    )
+    // Hanya 1 request ke endpoint baru!
+    const response = await api.get(`/orders/active/${tableId}`)
+    const { order, items } = response.data
 
-    if (activeOrder) {
-      selectedTable.value.currentOrderId = activeOrder.id
-      const items = (await api.get(`/orderItems?orderId=${activeOrder.id}`)).data
+    if (order) {
+      selectedTable.value.currentOrderId = order.id
+      
+      // Map items dengan nama menu (karena dari backend sudah disertakan)
       const mapped = items.map((item) => ({
         ...item,
-        menuName: menus.value.find((m) => m.id === item.menuId)?.name || 'Unknown',
+        menuName: item.menu?.name || 'Unknown',
       }))
+      
       orderItems.value = mapped
 
       const existingIds = new Set(mapped.map((i) => i.id))

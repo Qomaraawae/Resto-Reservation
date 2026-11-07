@@ -285,6 +285,40 @@ app.get('/orders', async (req, res) => {
   }
 })
 
+// Endpoint optimal: Ambil pesanan aktif + item + menu sekaligus
+app.get('/orders/active/:tableId', async (req, res) => {
+  try {
+    const tableId = Number(req.params.tableId)
+    
+    const activeOrder = await prisma.order.findFirst({
+      where: {
+        tableId: tableId,
+        status: { in: ['draft', 'pending', 'cooking', 'ready'] }
+      },
+      include: {
+        table: true,
+        orderItems: {
+          include: {
+            menu: true
+          }
+        }
+      }
+    })
+
+    if (!activeOrder) {
+      return res.json({ order: null, items: [] })
+    }
+
+    res.json({ 
+      order: activeOrder, 
+      items: activeOrder.orderItems 
+    })
+  } catch (error) {
+    console.error('GET /orders/active/:tableId error:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 app.get('/orders/:id', async (req, res) => {
   try {
     const order = await prisma.order.findUnique({
