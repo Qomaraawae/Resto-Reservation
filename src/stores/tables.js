@@ -6,11 +6,20 @@ export const useTablesStore = defineStore('tables', () => {
   const tables = ref([])
   const loading = ref(false)
 
-  const fetchTables = async () => {
+    const fetchTables = async () => {
     loading.value = true
     try {
       const response = await api.get('/tables')
-      tables.value = response.data
+      
+      // Urutkan meja berdasarkan 'number' secara natural (T1, T2, T3... T10)
+      const sortedTables = response.data.sort((a, b) => {
+        if (!a.number) return 1;
+        if (!b.number) return -1;
+        // localeCompare dengan numeric: true akan mengurutkan "T2" sebelum "T10"
+        return a.number.localeCompare(b.number, undefined, { numeric: true, sensitivity: 'base' })
+      })
+      
+      tables.value = sortedTables
     } catch (error) {
       console.error('Error fetching tables:', error)
     } finally {
