@@ -4,10 +4,10 @@
       class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-10"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-        <div class="flex items-center justify-between flex-wrap gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">
-            Laporan & Analitik
+              Laporan & Analitik
             </h1>
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
               Pantau kinerja dan pendapatan restoran Anda
@@ -16,7 +16,7 @@
           <button
             @click="exportReport"
             :disabled="loading || completedOrders.length === 0"
-            class="bg-gray-900 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="bg-gray-900 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
           >
             📥 Export Laporan
           </button>
@@ -34,11 +34,11 @@
       <template v-else>
         <!-- Filter Section -->
         <div
-          class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 mb-6"
+          class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5 mb-6"
         >
-          <div class="flex flex-wrap items-end gap-4">
+          <div class="flex flex-col gap-4">
             <div>
-              <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
+              <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">
                 Periode
               </label>
               <div class="flex flex-wrap gap-2">
@@ -47,7 +47,7 @@
                   :key="period.value"
                   @click="selectedPeriod = period.value; fetchReport()"
                   :class="[
-                    'px-3 py-1.5 rounded-lg text-sm font-medium transition-colors',
+                    'px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors flex-1 sm:flex-none',
                     selectedPeriod === period.value
                       ? 'bg-gray-900 dark:bg-gray-700 text-white'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
@@ -58,30 +58,30 @@
               </div>
             </div>
 
-            <div v-if="selectedPeriod === 'custom'" class="flex items-end gap-3">
-              <div>
+            <div v-if="selectedPeriod === 'custom'" class="flex flex-col sm:flex-row items-stretch sm:items-end gap-3">
+              <div class="flex-1">
                 <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
                   Dari
                 </label>
                 <input
                   v-model="customStartDate"
                   type="date"
-                  class="border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-1.5 text-sm dark:bg-gray-800 dark:text-white focus:border-gray-400 focus:outline-none"
+                  class="w-full border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm dark:bg-gray-800 dark:text-white focus:border-gray-400 focus:outline-none"
                 />
               </div>
-              <div>
+              <div class="flex-1">
                 <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
                   Sampai
                 </label>
                 <input
                   v-model="customEndDate"
                   type="date"
-                  class="border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-1.5 text-sm dark:bg-gray-800 dark:text-white focus:border-gray-400 focus:outline-none"
+                  class="w-full border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-sm dark:bg-gray-800 dark:text-white focus:border-gray-400 focus:outline-none"
                 />
               </div>
               <button
                 @click="fetchReport()"
-                class="bg-gray-900 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition-colors"
+                class="bg-gray-900 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap"
               >
                 Terapkan
               </button>
@@ -90,79 +90,73 @@
         </div>
 
         <!-- Stats Cards -->
-        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <div
-            class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5"
-          >
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5">
             <p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wide">
               Total Pendapatan
             </p>
-            <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-500 mt-2">
+            <p class="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-500 mt-2">
               Rp {{ formatCurrency(totalRevenue) }}
             </p>
           </div>
-          <div
-            class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5"
-          >
+          <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5">
             <p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wide">
               Total Pesanan
             </p>
-            <p class="text-2xl font-bold text-blue-600 dark:text-blue-500 mt-2">
+            <p class="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-500 mt-2">
               {{ totalOrders }}
             </p>
           </div>
-          <div
-            class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5"
-          >
+          <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5">
             <p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wide">
               Rata-rata per Pesanan
             </p>
-            <p class="text-2xl font-bold text-purple-600 dark:text-purple-500 mt-2">
+            <p class="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-500 mt-2">
               Rp {{ formatCurrency(averageOrder) }}
             </p>
           </div>
-          <div
-            class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5"
-          >
+          <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5">
             <p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wide">
               Item Terjual
             </p>
-            <p class="text-2xl font-bold text-orange-600 dark:text-orange-500 mt-2">
+            <p class="text-xl sm:text-2xl font-bold text-orange-600 dark:text-orange-500 mt-2">
               {{ totalItems }}
             </p>
           </div>
         </div>
 
         <!-- Chart Section -->
-        <div
-          class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 mb-6"
-        >
+        <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5 mb-6">
           <h3 class="text-base font-semibold text-gray-800 dark:text-white mb-4">
-          Grafik Penjualan (7 Hari Terakhir)
+            Grafik Penjualan (7 Hari Terakhir)
           </h3>
           <div v-if="chartData.length === 0" class="text-center py-8">
             <p class="text-gray-500 dark:text-gray-400">Belum ada data penjualan</p>
           </div>
-          <div v-else class="h-64 relative">
-            <div class="flex items-end justify-between h-56 gap-2">
-              <div
-                v-for="(item, index) in chartData"
-                :key="index"
-                class="flex-1 flex flex-col items-center"
-              >
+          <!-- Modifikasi: Menggunakan overflow-x-auto dan min-width agar grafik bisa di-scroll di HP -->
+          <div v-else class="w-full overflow-x-auto pb-2">
+            <div class="min-w-[500px] h-64 relative">
+              <div class="flex items-end justify-between h-56 gap-2">
                 <div
-                  class="w-full rounded-t-lg transition-all duration-500 relative"
-                  :style="{
-                    height: `${getBarHeight(item.total)}px`,
-                    backgroundColor: getBarColor(index)
-                  }"
+                  v-for="(item, index) in chartData"
+                  :key="index"
+                  class="flex-1 flex flex-col items-center group"
                 >
-                  <div class="text-center text-xs font-medium text-gray-600 dark:text-gray-300 absolute -top-5 w-full">
-                    {{ formatCurrency(item.total) }}
+                  <!-- Tooltip Harga (Disembunyikan secara default, muncul saat di-hover di desktop) -->
+                  <div
+                    class="w-full rounded-t-lg transition-all duration-500 relative"
+                    :style="{
+                      height: `${getBarHeight(item.total)}px`,
+                      backgroundColor: getBarColor(index)
+                    }"
+                  >
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity text-center text-xs font-medium text-gray-800 dark:text-gray-200 bg-white/90 dark:bg-gray-800/90 shadow-sm rounded px-1 py-0.5 absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap z-10">
+                      Rp {{ formatCurrency(item.total) }}
+                    </div>
                   </div>
-                </div>
-                <div class="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                  {{ item.label }}
+                  <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+                    {{ item.label }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -171,11 +165,9 @@
 
         <!-- Top Menu & Recent Orders -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <div
-            class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5"
-          >
+          <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5">
             <h3 class="text-base font-semibold text-gray-800 dark:text-white mb-4">
-            Menu Terlaris
+              Menu Terlaris
             </h3>
             <div v-if="topMenus.length === 0" class="text-center py-8">
               <p class="text-gray-500 dark:text-gray-400">Belum ada data menu</p>
@@ -203,7 +195,7 @@
                     {{ menu.totalSold }} terjual · Rp {{ formatCurrency(menu.totalRevenue) }}
                   </p>
                 </div>
-                <div class="w-24 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden flex-shrink-0">
+                <div class="w-16 sm:w-24 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden flex-shrink-0 hidden sm:block">
                   <div
                     class="h-full bg-emerald-500 rounded-full"
                     :style="{ width: `${(menu.totalSold / topMenus[0]?.totalSold) * 100}%` }"
@@ -213,9 +205,7 @@
             </div>
           </div>
 
-          <div
-            class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5"
-          >
+          <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-5">
             <h3 class="text-base font-semibold text-gray-800 dark:text-white mb-4">
               Transaksi Terbaru
             </h3>
@@ -241,7 +231,7 @@
                     Rp {{ formatCurrency(order.total) }}
                   </p>
                   <span
-                    class="text-xs px-2 py-0.5 rounded-full"
+                    class="text-xs px-2 py-0.5 rounded-full inline-block mt-1"
                     :class="
                       order.status === 'completed'
                         ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
@@ -257,34 +247,33 @@
         </div>
 
         <!-- Detail Table -->
-        <div
-          class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden"
-        >
-          <div class="px-5 py-4 border-b border-gray-200 dark:border-gray-700">
+        <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div class="px-4 sm:px-5 py-4 border-b border-gray-200 dark:border-gray-700">
             <h3 class="text-base font-semibold text-gray-800 dark:text-white">
-            Detail Transaksi
+              Detail Transaksi
             </h3>
           </div>
+          <!-- Overflow-x-auto memastikan tabel bisa digeser di HP -->
           <div class="overflow-x-auto">
-            <table class="w-full text-sm">
+            <table class="w-full text-sm min-w-[600px]">
               <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr>
-                  <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th class="px-3 sm:px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     #
                   </th>
-                  <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th class="px-3 sm:px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Meja
                   </th>
-                  <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th class="px-3 sm:px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Order ID
                   </th>
-                  <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th class="px-3 sm:px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Total
                   </th>
-                  <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th class="px-3 sm:px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Status
                   </th>
-                  <th class="px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  <th class="px-3 sm:px-5 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                     Tanggal
                   </th>
                 </tr>
@@ -295,19 +284,19 @@
                   :key="order.id"
                   class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
-                  <td class="px-5 py-3 text-gray-600 dark:text-gray-300">
+                  <td class="px-3 sm:px-5 py-3 text-gray-600 dark:text-gray-300">
                     {{ (currentPage - 1) * pageSize + index + 1 }}
                   </td>
-                  <td class="px-5 py-3 font-medium text-gray-800 dark:text-white">
+                  <td class="px-3 sm:px-5 py-3 font-medium text-gray-800 dark:text-white whitespace-nowrap">
                     {{ getTableNumber(order.tableId) }}
                   </td>
-                  <td class="px-5 py-3 text-gray-600 dark:text-gray-300">
+                  <td class="px-3 sm:px-5 py-3 text-gray-600 dark:text-gray-300 whitespace-nowrap">
                     {{ order.orderNumber }}
                   </td>
-                  <td class="px-5 py-3 font-semibold text-emerald-600 dark:text-emerald-400">
+                  <td class="px-3 sm:px-5 py-3 font-semibold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                     Rp {{ formatCurrency(order.total) }}
                   </td>
-                  <td class="px-5 py-3">
+                  <td class="px-3 sm:px-5 py-3 whitespace-nowrap">
                     <span
                       class="text-xs px-2 py-1 rounded-full"
                       :class="
@@ -319,7 +308,7 @@
                       {{ order.status === 'completed' ? '✅ Selesai' : order.status }}
                     </span>
                   </td>
-                  <td class="px-5 py-3 text-gray-500 dark:text-gray-400">
+                  <td class="px-3 sm:px-5 py-3 text-gray-500 dark:text-gray-400 whitespace-nowrap">
                     {{ formatDate(order.createdAt) }}
                   </td>
                 </tr>
@@ -328,8 +317,8 @@
           </div>
 
           <!-- Pagination -->
-          <div v-if="completedOrders.length > 0" class="px-5 py-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between flex-wrap gap-2">
-            <p class="text-sm text-gray-500 dark:text-gray-400">
+          <div v-if="completedOrders.length > 0" class="px-4 sm:px-5 py-4 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center sm:text-left">
               Menampilkan {{ (currentPage - 1) * pageSize + 1 }} - 
               {{ Math.min(currentPage * pageSize, completedOrders.length) }} 
               dari {{ completedOrders.length }} transaksi
